@@ -9,9 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.8.8",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/lab": "^5.0.0-alpha.73",
+    "@mui/material": "^5.5.1",
+    "axios": "^0.26.1",
+    "cookies": "^0.8.0",
+    "jwt-decode": "^3.1.2",
     "next": "12.1.0",
+    "query-string": "^7.1.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.28.0",
+    "react-query": "^3.34.16",
+    "react-table": "^7.7.0",
+    "react-toastify": "^8.2.0",
+    "react-use": "^17.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "8.11.0",
