@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 import { useDeleteContact } from 'hooks/queries/contacts';
 
-const UserTableRow = ({ user, handleOpen }) => {
+const UserTableRow = ({ no, user, handleOpen }) => {
     const {
         id,
         firstName,
@@ -32,7 +32,7 @@ const UserTableRow = ({ user, handleOpen }) => {
     return (
         <TableRow>
             <TableCell component="td" scope="row">
-                id
+                {no}
             </TableCell>
             <TableCell component="td" scope="row">
                 <IconButton onClick={() => handleOpen(id)} aria-label="edit">

@@ -34,12 +34,12 @@ const Login = () => {
             minHeight="100vh"
             position="relative"
             overflow="hidden"
-            sx={{
-                backgroundColor: (theme) =>
-                    theme.palette.mode === 'light'
-                        ? theme.palette.grey[100]
-                        : theme.palette.grey[900],
-            }}
+        // sx={{
+        //     backgroundColor: (theme) =>
+        //         theme.palette.mode === 'light'
+        //             ? theme.palette.grey[100]
+        //             : theme.palette.grey[900],
+        // }}
         >
             <Card
                 sx={{

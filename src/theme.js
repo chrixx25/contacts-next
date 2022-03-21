@@ -48,38 +48,38 @@ export default createTheme(theme, {
         font-weight: 700;
         src: url("/fonts/HelveticaNeue-Bold.otf") format("opentype");
       }
-      
+
       @font-face {
         font-family: "Helvetica Neue";
         font-style: normal;
         font-weight: 600;
         src: url("/fonts/HelveticaNeue-Medium.otf") format("opentype");
       }
-      
+
       @font-face {
         font-family: "Helvetica Neue";
         font-style: normal;
         font-weight: 500;
         src: url("/fonts/HelveticaNeue-Medium.otf") format("opentype");
       }
-      
+
       @font-face {
         font-family: "Helvetica Neue";
         font-style: normal;
         font-weight: 400;
         src: url("/fonts/HelveticaNeue-Regular.otf") format("opentype");
-      }      
+      }
 
       .rdtPicker {
         & td.rdtActive,
         & td.rdtActive:hover {
           background-color: ${theme.palette.primary.main}!important;
         }
-      
+
         & td.rdtToday:before {
           border-bottom-color: ${theme.palette.primary.main}!important;
         }
-      }      
+      }
     `,
     },
     MuiAppBar: {

@@ -49,8 +49,8 @@ const UserTable = ({ userData, handleOpen }) => {
                             </TableCell>
                         </TableRow>}
                     {!isError && !isLoading && data && (data.length > 0 &&
-                        data.map(user =>
-                            <UserTableRow key={user.id} user={user} handleOpen={handleOpen} />
+                        data.map((user, index) =>
+                            <UserTableRow key={user.id} user={user} no={(index + 1)} handleOpen={handleOpen} />
                         ))}
                 </TableBody>
             </Table>

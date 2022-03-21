@@ -84,6 +84,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("userName")}
                         helperText={errors.userName?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                     <TextField
                         error={!!errors.firstName}
@@ -92,6 +93,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("firstName")}
                         helperText={errors.firstName?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                     <TextField
                         error={!!errors.lastName}
@@ -100,6 +102,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("lastName")}
                         helperText={errors.lastName?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                     <TextField
                         error={!!errors.middleName}
@@ -108,6 +111,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("middleName")}
                         helperText={errors.middleName?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                     <TextField
                         error={!!errors.email}
@@ -117,6 +121,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("email")}
                         helperText={errors.email?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                     <TextField
                         error={!!errors.mobileNo}
@@ -125,6 +130,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         fullWidth
                         {...register("mobileNo")}
                         helperText={errors.mobileNo?.message}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Stack>
                 <Stack
@@ -146,7 +152,7 @@ const AddUserModal = ({ id, handleClose }) => {
                         Submit
                     </Button>
                     <Button
-                        type="submit"
+                        type="button"
                         variant="contained"
                         sx={{
                             backgroundColor: 'primary.main',
