@@ -6,6 +6,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { ToastContainer } from 'react-toastify';
 import { createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import ModalProvider from "mui-modal-provider";
 //import theme from "theme";
 
 const MyApp = ({ Component, pageProps }) => {
@@ -44,7 +45,58 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, {
     components: {
-
+      // MuiAppBar: {
+      //   defaultProps: {
+      //     color: "inherit",
+      //     elevation: 0,
+      //   },
+      // },
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            minHeight: 64,
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          paperAnchorLeft: {
+            borderRight: 0,
+          },
+        },
+      },
+      MuiTextField: {
+        defaultProps: {
+          fullWidth: true,
+        },
+      },
+      MuiMenu: {
+        styleOverrides: {
+          paper: {
+            borderRadius: 6,
+            marginTop: 1.25,
+          },
+          list: {
+            paddingTop: 1.25,
+            paddingBottom: 1.25,
+            maxHeight: 250,
+            overflowY: "auto",
+            "& li.Mui-selected": {
+              fontWeight: 700,
+            },
+          },
+        },
+        defaultProps: {
+          transformOrigin: { horizontal: "right", vertical: "top" },
+          anchorOrigin: { horizontal: "right", vertical: "bottom" },
+          PaperProps: {
+            elevation: 1,
+            sx: {
+              boxShadow: "0 2px 10px 0 #E5E5E5",
+            },
+          },
+        },
+      },
     }
   });
 
@@ -54,7 +106,9 @@ const MyApp = ({ Component, pageProps }) => {
       <ReactQueryDevtools initialIsOpen={false} />
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
       </ThemeProvider>
     </QueryClientProvider>
   )

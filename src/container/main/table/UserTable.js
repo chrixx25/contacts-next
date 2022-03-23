@@ -25,8 +25,8 @@ const UserTable = ({ userData, handleOpen }) => {
                         <Th>#</Th>
                         <Th>Actions</Th>
                         <Th>Full Name</Th>
-                        <Th>Mobile No.</Th>
                         <Th>Email</Th>
+                        <Th>Mobile No.</Th>
                     </TableRow>
                 </TableHead>
                 <TableBody>

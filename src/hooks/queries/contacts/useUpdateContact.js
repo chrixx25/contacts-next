@@ -7,15 +7,12 @@ const useUpdateContact = (id) => {
     return useMutation((data) => updateContact(id, data), {
         onSuccess: data => {
             /** Query Invalidation Start */
-            queryClient.invalidateQueries('contacts');
-
+            //queryClient.invalidateQueries('contacts');
             /** Handling Mutation Response Start */
-            // queryClient.setQueryData('super-heroes', oldQueryData => {
-            //   return {
-            //     ...oldQueryData,
-            //     data: [...oldQueryData.data, data.data]
-            //   }
-            // })
+            queryClient.setQueryData('contacts', oldContacts => {
+                const updatedContacts = oldContacts.map(oldContacts => oldContacts.id === id ? data : oldContacts);
+                return updatedContacts
+            })
         },
     })
 }

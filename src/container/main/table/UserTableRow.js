@@ -5,8 +5,9 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { toast } from 'react-toastify';
-
 import { useDeleteContact } from 'hooks/queries/contacts';
+import { useModal } from "mui-modal-provider";
+import EditContactModal from '../EditContactModal';
 
 const UserTableRow = ({ no, user, handleOpen }) => {
     const {
@@ -19,6 +20,8 @@ const UserTableRow = ({ no, user, handleOpen }) => {
     } = user;
 
     const { mutate: deleteContact, isLoading, status } = useDeleteContact();
+
+    const { showModal } = useModal();
 
     const handleDelete = (id) => {
         deleteContact(id)
@@ -35,7 +38,7 @@ const UserTableRow = ({ no, user, handleOpen }) => {
                 {no}
             </TableCell>
             <TableCell component="td" scope="row">
-                <IconButton onClick={() => handleOpen(id)} aria-label="edit">
+                <IconButton onClick={() => showModal(EditContactModal, { id })} aria-label="edit">
                     <EditIcon />
                 </IconButton>
                 <IconButton onClick={() => handleDelete(id)} disabled={isLoading} aria-label="delete">
@@ -43,7 +46,7 @@ const UserTableRow = ({ no, user, handleOpen }) => {
                 </IconButton>
             </TableCell>
             <TableCell component="td" scope="row">
-                {`${firstName} ${middleName} ${lastName}`}
+                {`${firstName} ${middleName} ${lastName}`.trim()}
             </TableCell>
             <TableCell component="td" scope="row">
                 {email}
@@ -55,4 +58,4 @@ const UserTableRow = ({ no, user, handleOpen }) => {
     )
 }
 
-export default UserTableRow
+export default UserTableRow;

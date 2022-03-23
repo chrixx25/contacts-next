@@ -4,27 +4,29 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Container from '@mui/material/Container';
+import { useModal } from "mui-modal-provider";
 
-import AddUserModal from './modals/AddUserModal';
-import EditUserModal from './modals/EditUserModal';
+// import AddUserModal from './modals/AddUserModal';
+// import EditUserModal from './modals/EditUserModal';
+import AddContactModal from './AddContactModal';
 import UserTable from './table/UserTable';
 import { useGetContacts } from 'hooks/queries/contacts'
 
 const Main = () => {
-    const [open, setOpen] = useState(false);
-    const [openEdit, setOpenEdit] = useState(false);
-    const [id, setId] = useState(false);
+    // const [open, setOpen] = useState(false);
+    // const [openEdit, setOpenEdit] = useState(false);
+    // const [id, setId] = useState(false);
 
     const userData = useGetContacts();
+    const { showModal } = useModal();
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    // const handleOpen = () => setOpen(true);
+    // const handleClose = () => setOpen(false);
     const handleOpenEdit = (id) => {
         setId(id);
         setOpenEdit(true);
     };
-    const handleCloseEdit = () => setOpenEdit(false);
+    // const handleCloseEdit = () => setOpenEdit(false);
 
     return (
         <>
@@ -43,17 +45,23 @@ const Main = () => {
                                     backgroundColor: 'primary.main',
                                     maxWidth: 'auto'
                                 }}
-                                onClick={handleOpen}
+                                // onClick={handleOpen}
+                                onClick={() =>
+                                    showModal(AddContactModal)
+                                }
                             >
                                 Add Contact
                             </Button>
                         </Stack>
-                        <UserTable handleOpen={handleOpenEdit} userData={userData} />
+                        <UserTable
+                            // handleOpen={handleOpenEdit}
+                            userData={userData}
+                        />
                     </Paper>
                 </Grid>
             </Stack>
-            {open && <AddUserModal handleClose={handleClose} />}
-            {id && openEdit && <EditUserModal id={id} handleClose={handleCloseEdit} />}
+            {/* {open && <AddUserModal handleClose={handleClose} />}
+            {id && openEdit && <EditUserModal id={id} handleClose={handleCloseEdit} />} */}
         </>
     )
 }
