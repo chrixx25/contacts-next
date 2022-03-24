@@ -39,7 +39,7 @@ const EditContactModal = (props) => {
                     }
                 });
             }
-        })
+        });
     };
 
     //effect runs when user state is updated

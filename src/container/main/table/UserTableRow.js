@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { useDeleteContact } from 'hooks/queries/contacts';
 import { useModal } from "mui-modal-provider";
 import EditContactModal from '../EditContactModal';
+import ConfirmationModal from "../ConfirmationModal";
 
 const UserTableRow = ({ no, user, handleOpen }) => {
     const {
@@ -18,19 +19,25 @@ const UserTableRow = ({ no, user, handleOpen }) => {
         email,
         mobileNo
     } = user;
-
-    const { mutate: deleteContact, isLoading, status } = useDeleteContact();
-
+    const deleteContact = useDeleteContact();
     const { showModal } = useModal();
 
     const handleDelete = (id) => {
-        deleteContact(id)
+        const modal = showModal(ConfirmationModal, {
+            message: `Are you sure to delete ${firstName}?`,
+            onConfirm: () => {
+                deleteContact.mutate(id, {
+                    onSuccess: () => {
+                        onClose();
+                        toast.success("Contact deleted successfully!");
+                    },
+                    onSettled: () => {
+                        modal.hide();
+                    }
+                });
+            }
+        })
     }
-
-    useEffect(() => {
-        if (status === 'success')
-            toast.success("Contact deleted successfully!");
-    }, [status]);
 
     return (
         <TableRow>
@@ -41,7 +48,7 @@ const UserTableRow = ({ no, user, handleOpen }) => {
                 <IconButton onClick={() => showModal(EditContactModal, { id })} aria-label="edit">
                     <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => handleDelete(id)} disabled={isLoading} aria-label="delete">
+                <IconButton onClick={() => handleDelete(id)} disabled={deleteContact.isLoading} aria-label="delete">
                     <DeleteIcon />
                 </IconButton>
             </TableCell>
