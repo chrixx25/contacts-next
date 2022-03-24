@@ -9,13 +9,15 @@ import Modal from "component/Modal";
 import EditContact from "component/data-entry/forms/EditContact";
 import { useGetContactById, useUpdateContact } from 'hooks/queries/contacts';
 import { toast } from 'react-toastify';
-
+import { useModal } from "mui-modal-provider";
 import { schema, defaultFormValues } from './utils';
+import ConfirmationModal from "../ConfirmationModal";
 
 const EditContactModal = (props) => {
     const { id, open, onClose } = props;
     const updateContact = useUpdateContact(id);
     const contact = useGetContactById(id);
+    const { showModal } = useModal();
 
     const contactForm = useForm({
         shouldUnregister: true,
@@ -24,12 +26,20 @@ const EditContactModal = (props) => {
     });
 
     const handleSubmit = (values) => {
-        updateContact.mutate(values, {
-            onSuccess: () => {
-                onClose();
-                toast.success("Contact updated successfully!");
-            },
-        });
+        const modal = showModal(ConfirmationModal, {
+            message: `Are you sure to update ${values.firstName}?`,
+            onConfirm: () => {
+                updateContact.mutate(values, {
+                    onSuccess: () => {
+                        onClose();
+                        toast.success("Contact updated successfully!");
+                    },
+                    onSettled: () => {
+                        modal.hide();
+                    }
+                });
+            }
+        })
     };
 
     //effect runs when user state is updated

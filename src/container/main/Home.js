@@ -10,7 +10,7 @@ import { useModal } from "mui-modal-provider";
 // import EditUserModal from './modals/EditUserModal';
 import AddContactModal from './AddContactModal';
 import UserTable from './table/UserTable';
-import { useGetContacts } from 'hooks/queries/contacts'
+import { useGetContacts } from 'hooks/queries/contacts';
 
 const Main = () => {
     // const [open, setOpen] = useState(false);
@@ -22,10 +22,10 @@ const Main = () => {
 
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
-    const handleOpenEdit = (id) => {
-        setId(id);
-        setOpenEdit(true);
-    };
+    // const handleOpenEdit = (id) => {
+    //     setId(id);
+    //     setOpenEdit(true);
+    // };
     // const handleCloseEdit = () => setOpenEdit(false);
 
     return (

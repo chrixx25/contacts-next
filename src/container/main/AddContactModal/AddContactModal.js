@@ -6,24 +6,36 @@ import Stack from "@mui/material/Stack";
 import Form from "component/Form";
 import Modal from "component/Modal";
 import AddContact from "component/data-entry/forms/AddContact";
+import ConfirmationModal from "../ConfirmationModal";
 import { useAddContact } from 'hooks/queries/contacts';
-
-import { defaultFormValues, schema } from './utils'
+import { defaultFormValues, schema } from './utils';
+import { useModal } from "mui-modal-provider";
 
 const AddContactModal = (props) => {
     const { open, onClose } = props;
-
+    const { showModal } = useModal();
     const contactForm = useForm({
         shouldUnregister: true,
         defaultValues: defaultFormValues,
         resolver: yupResolver(schema),
+        mode: "onChange"
     });
-
     const addContact = useAddContact();
 
     const handleSubmit = (values) => {
-        addContact.mutate(values, {
-            onSuccess: onClose,
+        const modal = showModal(ConfirmationModal, {
+            message: `Are you sure to add ${values.firstName}?`,
+            onConfirm: () => {
+                addContact.mutate(values, {
+                    onSuccess: () => {
+                        onClose();
+                        toast.success("Contact added successfully!");
+                    },
+                    onSettled: () => {
+                        modal.hide();
+                    }
+                });
+            }
         });
     };
 
