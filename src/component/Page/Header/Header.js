@@ -62,7 +62,7 @@ const PageHeader = () => {
     }));
 
     return (
-        <AppBar position="fixed" component="header" open={state.sidebarCollapsed} >
+        <AppBar position="fixed" open={state.sidebarCollapsed} >
             <Toolbar>
                 <IconButton
                     size="large"
@@ -74,7 +74,7 @@ const PageHeader = () => {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                     CONTACT MANAGER
                 </Typography>
                 <IconButton
@@ -125,7 +125,6 @@ const PageHeader = () => {
                         Logout
                     </MenuItem>
                 </Menu>
-
             </Toolbar>
         </AppBar >
     );

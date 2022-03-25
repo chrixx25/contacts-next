@@ -1,5 +1,5 @@
 
-import Page from 'component/Page'
+import Page from 'component/Page2'
 import Main from '../container/main';
 import { withSession } from '../utils/session';
 
