@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ModalProvider from "mui-modal-provider";
+import { SnackbarProvider } from 'notistack';
 //import theme from "theme";
 
 const MyApp = ({ Component, pageProps }) => {
@@ -106,9 +107,15 @@ const MyApp = ({ Component, pageProps }) => {
       <ReactQueryDevtools initialIsOpen={false} />
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <ModalProvider>
-          <Component {...pageProps} />
-        </ModalProvider>
+        <SnackbarProvider
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}>
+          <ModalProvider>
+            <Component {...pageProps} />
+          </ModalProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </QueryClientProvider>
   )

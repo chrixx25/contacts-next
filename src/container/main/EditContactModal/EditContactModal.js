@@ -12,12 +12,14 @@ import { toast } from 'react-toastify';
 import { useModal } from "mui-modal-provider";
 import { schema, defaultFormValues } from './utils';
 import ConfirmationModal from "../ConfirmationModal";
+import { useSnackbar } from 'notistack';
 
 const EditContactModal = (props) => {
     const { id, open, onClose } = props;
     const updateContact = useUpdateContact(id);
     const contact = useGetContactById(id);
     const { showModal } = useModal();
+    const { enqueueSnackbar } = useSnackbar();
 
     const contactForm = useForm({
         shouldUnregister: true,
@@ -32,7 +34,11 @@ const EditContactModal = (props) => {
                 updateContact.mutate(values, {
                     onSuccess: () => {
                         onClose();
-                        toast.success("Contact updated successfully!");
+                        //toast.success("Contact updated successfully!");
+                        enqueueSnackbar('Contact updated successfully!!', {
+                            variant: 'success',
+                            autoHideDuration: 3000,
+                        });
                     },
                     onSettled: () => {
                         modal.hide();

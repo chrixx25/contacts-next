@@ -10,10 +10,12 @@ import ConfirmationModal from "../ConfirmationModal";
 import { useAddContact } from 'hooks/queries/contacts';
 import { defaultFormValues, schema } from './utils';
 import { useModal } from "mui-modal-provider";
+import { useSnackbar } from 'notistack';
 
 const AddContactModal = (props) => {
     const { open, onClose } = props;
     const { showModal } = useModal();
+    const { enqueueSnackbar } = useSnackbar();
     const contactForm = useForm({
         shouldUnregister: true,
         defaultValues: defaultFormValues,
@@ -29,7 +31,11 @@ const AddContactModal = (props) => {
                 addContact.mutate(values, {
                     onSuccess: () => {
                         onClose();
-                        toast.success("Contact added successfully!");
+                        // toast.success("Contact added successfully!");
+                        enqueueSnackbar('Contact added successfully!!', {
+                            variant: 'success',
+                            autoHideDuration: 3000,
+                        });
                     },
                     onSettled: () => {
                         modal.hide();

@@ -9,6 +9,7 @@ import { useDeleteContact } from 'hooks/queries/contacts';
 import { useModal } from "mui-modal-provider";
 import EditContactModal from '../EditContactModal';
 import ConfirmationModal from "../ConfirmationModal";
+import { useSnackbar } from 'notistack';
 
 const UserTableRow = ({ no, user, handleOpen }) => {
     const {
@@ -21,6 +22,7 @@ const UserTableRow = ({ no, user, handleOpen }) => {
     } = user;
     const deleteContact = useDeleteContact();
     const { showModal } = useModal();
+    const { enqueueSnackbar } = useSnackbar();
 
     const handleDelete = (id) => {
         const modal = showModal(ConfirmationModal, {
@@ -29,7 +31,11 @@ const UserTableRow = ({ no, user, handleOpen }) => {
                 deleteContact.mutate(id, {
                     onSuccess: () => {
                         onClose();
-                        toast.success("Contact deleted successfully!");
+                        // toast.success("Contact deleted successfully!");
+                        enqueueSnackbar('Contact deleted successfully!!', {
+                            variant: 'success',
+                            autoHideDuration: 3000,
+                        });
                     },
                     onSettled: () => {
                         modal.hide();

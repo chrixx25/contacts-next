@@ -6,7 +6,7 @@ const useGetContactById = (id) => {
     return useQuery(['contact', id], getContactById, {
         enable: !!id,
         initialData: () => {
-            const contact = queryClient.getQueryData('contacts').find(contact => contact.id === id);
+            const contact = queryClient?.getQueryData('contacts').find(contact => contact.id === id);
             if (!contact) return undefined;
             return contact;
         }
