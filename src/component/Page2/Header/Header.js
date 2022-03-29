@@ -22,6 +22,8 @@ import { sessionOptions, getUser } from "utils/session";
 import { useCookie } from "react-use";
 import { useRouter } from "next/router";
 import { useAppState } from "../context";
+import { useUser } from 'contexts/UserProvider';
+import jwtDecode from "jwt-decode";
 
 const drawerWidth = 240;
 
@@ -46,8 +48,10 @@ const AppBar = styled(MuiAppBar, {
 const Header = () => {
     const popupState = usePopupState({ variant: "popover", popupId: "account-menu" });
     const [state, dispatch] = useAppState();
-    const [, , deleteCookie] = useCookie(sessionOptions.cookieName);
+    const [value, , deleteCookie] = useCookie(sessionOptions.cookieName);
     const router = useRouter();
+    const user = useUser()[0]?.result || (value ? jwtDecode(value).result : {});
+    const avatarLetters = `${user?.firstName?.substring(0, 1) || ''}${user?.lastName?.substring(0, 1) || ''}`;
 
     const handleLogout = () => {
         deleteCookie();
@@ -81,7 +85,7 @@ const Header = () => {
                         aria-haspopup="true"
                         aria-expanded={state.sidebarCollapsed ? "true" : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        <Avatar sx={{ width: 32, height: 32 }}>{avatarLetters}</Avatar>
                     </IconButton>
                 </Tooltip>
                 <Menu
