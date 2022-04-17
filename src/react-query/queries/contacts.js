@@ -1,7 +1,14 @@
 import { useQuery, useQueryClient } from 'react-query';
-import { getContactById } from 'services/contacts';
+import { getContacts, getContactById } from 'apis';
 
-const useGetContactById = (id) => {
+export const useGetContacts = (meta) => {
+    return useQuery(['contacts', meta], () => getContacts(meta), {
+        initialData: { results: [], page: 1, size: 10, pages: 0, total: 0 },
+        keepPreviousData: true,
+    })
+}
+
+export const useGetContactById = (id) => {
     const queryClient = useQueryClient()
     return useQuery(['contact', id], getContactById, {
         enable: !!id,
@@ -12,5 +19,3 @@ const useGetContactById = (id) => {
         }
     });
 }
-
-export default useGetContactById;

@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import { useMutation } from "react-query";
 import { useCookie } from "react-use";
 
-import { signIn } from "services/user";
+import { signIn } from "apis";
 import { sessionOptions } from "utils/session";
 
-const useAuth = () => {
+export const useAuth = () => {
     const router = useRouter();
     const [, updateCookie] = useCookie(sessionOptions.cookieName);
 
@@ -16,5 +16,3 @@ const useAuth = () => {
         },
     });
 };
-
-export default useAuth;

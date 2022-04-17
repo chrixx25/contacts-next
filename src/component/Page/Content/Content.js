@@ -1,9 +1,11 @@
-import Container from '@mui/material/Container';
+import Box from "@mui/material/Box";
 
 const Content = ({ children }) => {
     return (
-        <Container component="main" maxWidth="lg" sx={{ pt: 3, flexGrow: 1 }}>{children}</Container>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            {children}
+        </Box>
     )
 }
 
-export default Content;
+export default Content

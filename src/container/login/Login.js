@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from './validationSchema';
 
-import { useAuth } from "hooks/queries/user";
+import { useAuth } from "react-query/mutations";
 
 const Login = () => {
     const { mutate: signIn, isLoading, error, isError } = useAuth();

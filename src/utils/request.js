@@ -23,7 +23,17 @@ request.interceptors.request.use((config) => ({
 request.interceptors.response.use(
   (response) => response.data,
   (error) => {
+
     if (error.response) {
+      if (
+        !error.request.responseURL.endsWith("sign-in") &&
+        (error.response.status === 401 || error.response.status === 403) &&
+        typeof window !== "undefined"
+      ) {
+        document.cookie = `${sessionOptions.cookieName}=`;
+        window.location.href = "/signin";
+      }
+
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       return Promise.reject(error.response.data);

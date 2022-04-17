@@ -8,7 +8,7 @@ import UserTableRow from './UserTableRow';
 import TableCell from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
 
-const UserTable = ({ userData, handleOpen }) => {
+const UserTable = ({ userData, handleOpen, meta }) => {
     const Th = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.body}`]: {
             fontSize: 14,
@@ -42,15 +42,15 @@ const UserTable = ({ userData, handleOpen }) => {
                                 Loading....
                             </TableCell>
                         </TableRow>}
-                    {!isError && !isLoading && data && data.length < 1 &&
+                    {!isError && !isLoading && data.results && data.results.length < 1 &&
                         <TableRow>
                             <TableCell align="center" component="td" scope="row" colSpan="5">
                                 No Data
                             </TableCell>
                         </TableRow>}
-                    {!isError && !isLoading && data && (data.length > 0 &&
-                        data.map((user, index) =>
-                            <UserTableRow key={user.id} user={user} no={(index + 1)} handleOpen={handleOpen} />
+                    {!isError && !isLoading && data.results && (data.results.length > 0 &&
+                        data.results.map((user, index) =>
+                            <UserTableRow key={user.id} user={user} no={(index + 1)} meta={meta} handleOpen={handleOpen} />
                         ))}
                 </TableBody>
             </Table>

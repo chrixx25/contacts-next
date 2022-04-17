@@ -1,10 +1,12 @@
 import request from "utils/request";
 
-export const getContacts = () => {
+export const getContacts = ({ page, pageSize }) => {
     const options = {
         url: "users",
+        params: { page, limit: pageSize }
     };
-    return request.get(options.url);
+    return request.get(options.url, { params: options.params }
+    );
 };
 
 export const getContactById = ({ queryKey }) => {

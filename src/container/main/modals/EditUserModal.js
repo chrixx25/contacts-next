@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from '../validationSchema';
 
-import { useGetContactById, useUpdateContact } from 'hooks/queries/contacts';
+import { useGetContactById } from 'react-query/queries';
+import { useUpdateContact } from 'react-query/mutations';
 import DialogBox from 'component/dialog'
 
 const EditUserModal = ({ id, handleClose }) => {

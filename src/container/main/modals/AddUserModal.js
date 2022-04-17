@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from '../validationSchema';
-import { useAddContact } from 'hooks/queries/contacts';
+import { useAddContact } from 'react-query/mutations';
 
 import DialogBox from 'component/dialog'
 

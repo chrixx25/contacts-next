@@ -64,7 +64,7 @@ const DataTable = (props) => {
           }),
           [state]
         ),
-      initialState: { currentPage },
+      initialState: { currentPage, pageSize },
       manualPagination: true,
       pageCount: totalPages,
     },
