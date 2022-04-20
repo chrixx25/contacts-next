@@ -1,4 +1,3 @@
-import '../styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';

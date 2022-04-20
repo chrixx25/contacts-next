@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import queryString from "query-string";
 
 const request = axios.create({
-  baseURL: 'http://localhost:5000/contact/',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 
   paramsSerializer: (params) =>
     queryString.stringify(params, {

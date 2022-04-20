@@ -1,4 +1,3 @@
-import { useState, Fragment } from 'react';
 import MuiDrawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -7,23 +6,11 @@ import Divider from "@mui/material/Divider";
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+
 import { useAppState } from "../context";
 import { styled, useTheme } from "@mui/material/styles";
-import List from "@mui/material/List";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import routes from "./routers";
-import Link from "next/link";
-// import ListSubheader from '@mui/material/ListSubheader';
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import { sessionOptions } from "utils/session";
 import { useUser } from 'contexts/UserProvider';
-import { useCookie } from "react-use";
-import jwtDecode from "jwt-decode";
+import Menu from "./Menu"
 
 const openedMixin = (theme) => ({
     width: theme.drawerWidth,
@@ -75,15 +62,7 @@ const Drawer = styled(MuiDrawer, {
 const SideBar = () => {
     const theme = useTheme();
     const [state, dispatch] = useAppState();
-    const [value, ,] = useCookie(sessionOptions.cookieName);
-    const [subListState, setSubListState] = useState({});
-    const user = useUser()[0]?.result || (value ? jwtDecode(value).result : {});
-
-    const handleClick = (key) => {
-        setSubListState(old => {
-            return { ...old, [key]: !(subListState[key] || false) }
-        });
-    };
+    const user = useUser()[0]?.result;
 
     return (
         <Drawer variant="permanent" open={state.sidebarCollapsed}>
@@ -108,68 +87,7 @@ const SideBar = () => {
                         </Typography>
                     </CardContent>
                 </Card>}
-            <List
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-            // subheader={
-            //     <ListSubheader component="div" id="nested-list-subheader">
-            //         Nested List Items
-            //     </ListSubheader>
-            // }
-            >
-                {routes.map(({ name, path, icon, subMenus }, index) => {
-                    if (subMenus) {
-                        return (
-                            <Fragment key={index}>
-                                <ListItemButton onClick={() => handleClick(name)}>
-                                    <ListItemIcon>
-                                        <InboxIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary={name} />
-                                    {subListState[name] ? <ExpandLess /> : <ExpandMore />}
-                                </ListItemButton>
-                                <Collapse in={subListState[name]} timeout="auto" unmountOnExit>
-                                    {subMenus.length > 0 && subMenus.map((subMenu, subIndex) =>
-                                        <Link key={subIndex} href={subMenu.path} passHref>
-                                            <List component="div" disablePadding>
-                                                <ListItemButton sx={{ pl: 4 }} >
-                                                    <ListItemIcon>
-                                                        {subMenu.icon}
-                                                    </ListItemIcon>
-                                                    <ListItemText primary={subMenu.name} />
-                                                </ListItemButton>
-                                            </List>
-                                        </Link>
-                                    )}
-                                </Collapse>
-                            </Fragment>
-                        );
-                    }
-
-                    return (
-                        <Link key={index} href={path} passHref>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: state.sidebarCollapsed ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: state.sidebarCollapsed ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    {icon}
-                                </ListItemIcon>
-                                <ListItemText primary={name} sx={{ opacity: state.sidebarCollapsed ? 1 : 0 }} />
-                            </ListItemButton>
-                        </Link>
-                    );
-                })}
-            </List>
+            <Menu />
         </Drawer>
     )
 }

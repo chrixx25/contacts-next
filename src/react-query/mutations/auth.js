@@ -12,7 +12,8 @@ export const useAuth = () => {
     return useMutation(signIn, {
         onSuccess: (data) => {
             updateCookie(data.token);
-            router.push("/");
+            //router.push("/");
+            router.reload();
         },
     });
 };

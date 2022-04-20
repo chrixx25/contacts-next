@@ -8,7 +8,7 @@ const noop = (context, user) => ({
 });
 
 const sessionOptions = {
-  cookieName: 'userToken',
+  cookieName: process.env.NEXT_PUBLIC_COOKIE_NAME,
   cookieOptions: {
     maxAge: undefined,
     secure: false,
