@@ -2,7 +2,7 @@ import Page from 'component/Page'
 import Users from '../container/users';
 import { withSession } from '../utils/session';
 
-const UsersPage = () => (
+const UsersPage: React.FC = () => (
     <Page>
         <Users />
     </Page>

@@ -10,7 +10,16 @@ import { SnackbarProvider } from 'notistack';
 import UserProvider from 'contexts/UserProvider';
 import theme from "theme";
 
-const MyApp = (props) => {
+interface PageProps {
+  user: object
+}
+
+interface Props {
+  Component: React.FC;
+  pageProps: PageProps;
+}
+
+const MyApp: React.FC<Props> = (props) => {
   const {
     Component,
     pageProps: { user, ...pageProps },

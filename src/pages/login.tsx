@@ -1,7 +1,7 @@
 import Login from '../container/login';
 import { withSession } from '../utils/session';
 
-const login = () => <Login />;
+const login: React.FC = () => <Login />;
 
 export const getServerSideProps = withSession({ action: "RIA" });
 
