@@ -8,7 +8,7 @@ interface Route {
   name: string;
   path: string;
   icon?: React.ReactNode;
-  subMenus?: Route[];
+  children?: Route[];
 }
 
 const routes: Route[] = [
@@ -16,33 +16,23 @@ const routes: Route[] = [
     name: 'Main',
     path: '/',
     icon: <DashboardIcon />,
-  },
-  {
-    name: 'User',
-    path: '/users',
-    icon: <GroupIcon />,
-  },
-  {
-    name: 'User',
-    path: '/users',
-    icon: <InboxIcon />,
-    subMenus: [
+    children: [
       {
         name: 'User',
         path: '/users',
-        icon: <StarBorder />,
+        icon: null,
       },
     ],
   },
   {
-    name: 'send',
-    path: '/send',
-    icon: <SendIcon />,
-    subMenus: [
+    name: 'Dashboard',
+    path: '/dashboard',
+    icon: <DashboardIcon />,
+    children: [
       {
-        name: 'send',
-        path: '/send',
-        icon: <SendIcon />,
+        name: 'Main',
+        path: '/main',
+        icon: null,
       },
     ],
   },

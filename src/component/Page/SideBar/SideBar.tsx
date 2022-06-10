@@ -11,6 +11,7 @@ import { useAppState } from '../context';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import { useUser } from 'contexts/UserProvider';
 import Menu from './Menu';
+import routes from './routers';
 
 interface StyledTheme extends Theme {
   drawerWidth: number;
@@ -104,7 +105,7 @@ const SideBar = () => {
           </CardContent>
         </Card>
       )} */}
-      <Menu />
+      <Menu routes={routes} isCollapsed={state.sidebarCollapsed} />
     </Drawer>
   );
 };

@@ -1,13 +1,9 @@
 import Page from 'component/Page';
-import Users from '../container/users';
+import Main from '../container/main';
 import { withSession } from '../utils/session';
 
-const UsersPage = (): React.ReactElement => (
-  <Page>
-    <Users />
-  </Page>
-);
+const Home = (): React.ReactElement => <Page>main</Page>;
 
 export const getServerSideProps = withSession({ action: 'RINA' });
 
-export default UsersPage;
+export default Home;
