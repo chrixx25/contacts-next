@@ -1,87 +1,72 @@
-import { useState, Fragment } from 'react';
-import { useRouter } from 'next/router';
-import Link from "next/link";
+import { useState, Fragment } from "react";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
+import { styled } from "@mui/material/styles";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { useAppState } from "../../context";
-import routes from "../routers";
+const StyleExpandIcon = styled(ExpandMoreIcon, {
+  shouldForwardProp: (prop) => prop !== "isFlipped",
+})(({ theme, isFlipped }) => ({
+  transition: theme.transitions.create(["transform"]),
+  ...(isFlipped && {
+    transform: "rotate(-180deg)",
+  }),
+}));
 
-const Menu = () => {
-    const router = useRouter()
-    const [state] = useAppState();
-    const [subListState, setSubListState] = useState({});
+const Menu = (props) => {
+  const { routes, isCollapsed } = props;
+  const { pathname } = useRouter();
+  const [openKeys, setOpenKeys] = useState(() =>
+    pathname.split(/(?=\/)/g).reduce(
+      (acc, val) => ({
+        ...acc,
+        [(Object.keys(acc).pop() ?? "") + val]: true,
+      }),
+      {}
+    )
+  );
 
-    const handleClick = (key) => {
-        setSubListState(prev => ({ ...prev, [key]: !(subListState[key] || false) }));
-    };
+  const handleClick = (key) => {
+    setOpenKeys((oldKeys) => ({
+      ...oldKeys,
+      [key]: !oldKeys[key],
+    }));
 
-    return (
-        <List
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-        >
-            {routes.map(({ name, path, icon, subMenus }, index) => {
-                if (subMenus) {
-                    return (
-                        <Fragment key={index}>
-                            <ListItemButton selected={path === router.pathname} onClick={() => handleClick(name)}>
-                                <ListItemIcon>
-                                    <InboxIcon />
-                                </ListItemIcon>
-                                <ListItemText primary={name} />
-                                {subListState[name] ? <ExpandLess /> : <ExpandMore />}
-                            </ListItemButton>
-                            <Collapse in={subListState[name]} timeout="auto" unmountOnExit>
-                                {subMenus.length > 0 && subMenus.map((subMenu, subIndex) =>
-                                    <Link key={subIndex} href={subMenu.path} passHref>
-                                        <List component="div" disablePadding>
-                                            <ListItemButton sx={{ pl: 4 }} >
-                                                <ListItemIcon>
-                                                    {subMenu.icon}
-                                                </ListItemIcon>
-                                                <ListItemText primary={subMenu.name} />
-                                            </ListItemButton>
-                                        </List>
-                                    </Link>
-                                )}
-                            </Collapse>
-                        </Fragment>
-                    );
-                }
 
-                return (
-                    <Link key={index} href={path} passHref>
-                        <ListItemButton
-                            selected={path === router.pathname}
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: state.sidebarCollapsed ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: state.sidebarCollapsed ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                {icon}
-                            </ListItemIcon>
-                            <ListItemText primary={name} sx={{ opacity: state.sidebarCollapsed ? 1 : 0 }} />
-                        </ListItemButton>
-                    </Link>
-                );
-            })}
-        </List>
-    );
+    console.log(openKeys)
+  };
+
+  return (
+    <List>
+      {routes.map(({ name, path, icon, children }, index) => (
+        <Fragment key={index}>
+          <Link href={path} passHref>
+            <ListItemButton component="a" selected={!!openKeys[path]}>
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText primary={name} />
+              {children && children.length > 0 && (
+                <StyleExpandIcon
+                  isFlipped={!!openKeys[path]}
+                  onClick={() => handleClick(path)}
+                />
+              )}
+            </ListItemButton>
+          </Link>
+          {children && children.length > 0 && (
+            <Collapse in={!!openKeys[path]} timeout="auto" unmountOnExit>
+              <Menu routes={children} isCollapsed={isCollapsed} />
+            </Collapse>
+          )}
+        </Fragment>
+      ))}
+    </List>
+  );
 };
 
 export default Menu;
