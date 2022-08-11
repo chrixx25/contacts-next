@@ -1,6 +1,4 @@
-import RemoveIcon from "@mui/icons-material/Remove";
-import { timelineConnectorClasses } from "@mui/lab/TimelineConnector";
-import { createTheme, alpha } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   drawerWidth: 240,
@@ -24,7 +22,7 @@ const theme = createTheme({
       black: "#333333",
       form: "#E5E5E5",
     },
-  }
+  },
 });
 
 export default createTheme(theme, {
@@ -139,5 +137,5 @@ export default createTheme(theme, {
         },
       },
     },
-  }
+  },
 });

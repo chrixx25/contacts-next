@@ -1,12 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from "react";
+
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
 import { useModal } from "mui-modal-provider";
-import AddContactModal from './AddContactModal';
-import UserTable from './table/UserTable';
-import { useGetContacts } from 'react-query/queries';
+
+import { useGetContacts } from "react-query/queries";
+
+import AddContactModal from "./AddContactModal";
+import UserTable from "./table/UserTable";
 
 const Main = () => {
   // const [open, setOpen] = useState(false);
@@ -29,23 +32,17 @@ const Main = () => {
     <>
       <Stack spacing={3}>
         <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Stack
-              direction="row"
-              spacing={2}
-              mb={2}
-            >
+          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+            <Stack direction="row" spacing={2} mb={2}>
               <Button
                 type="submit"
                 variant="contained"
                 sx={{
-                  backgroundColor: 'primary.main',
-                  maxWidth: 'auto'
+                  backgroundColor: "primary.main",
+                  maxWidth: "auto",
                 }}
                 // onClick={handleOpen}
-                onClick={() =>
-                  showModal(AddContactModal)
-                }
+                onClick={() => showModal(AddContactModal)}
               >
                 Add Contact
               </Button>
@@ -61,7 +58,7 @@ const Main = () => {
       {/* {open && <AddUserModal handleClose={handleClose} />}
             {id && openEdit && <EditUserModal id={id} handleClose={handleCloseEdit} />} */}
     </>
-  )
-}
+  );
+};
 
 export default Main;

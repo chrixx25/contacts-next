@@ -1,8 +1,4 @@
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import GroupIcon from '@mui/icons-material/Group';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import SendIcon from '@mui/icons-material/Send';
-import StarBorder from '@mui/icons-material/StarBorder';
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 interface Route {
   name: string;
@@ -13,25 +9,25 @@ interface Route {
 
 const routes: Route[] = [
   {
-    name: 'Main',
-    path: '/',
+    name: "Main",
+    path: "/",
     icon: <DashboardIcon />,
     children: [
       {
-        name: 'User',
-        path: '/users',
+        name: "User",
+        path: "/users",
         icon: null,
       },
     ],
   },
   {
-    name: 'Dashboard',
-    path: '/dashboard',
+    name: "Dashboard",
+    path: "/dashboard",
     icon: <DashboardIcon />,
     children: [
       {
-        name: 'Main',
-        path: '/main',
+        name: "Main",
+        path: "/main",
         icon: null,
       },
     ],

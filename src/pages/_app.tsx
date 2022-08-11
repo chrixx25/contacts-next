@@ -1,17 +1,18 @@
-import 'react-toastify/dist/ReactToastify.css';
-import { QueryClientProvider, QueryClient } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import "react-toastify/dist/ReactToastify.css";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { ThemeProvider } from "@mui/material/styles";
-import { ToastContainer } from 'react-toastify';
-//import { createTheme } from "@mui/material/styles";
+import { ToastContainer } from "react-toastify";
+// import { createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ModalProvider from "mui-modal-provider";
-import { SnackbarProvider } from 'notistack';
-import UserProvider from 'contexts/UserProvider';
+import { SnackbarProvider } from "notistack";
+
+import UserProvider from "contexts/UserProvider";
 import theme from "theme";
 
 interface PageProps {
-  user: object
+  user: object;
 }
 
 interface Props {
@@ -44,9 +45,10 @@ const MyApp: React.FC<Props> = (props) => {
         <UserProvider initialValue={user}>
           <SnackbarProvider
             anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}>
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
             <ModalProvider>
               <Component {...pageProps} />
             </ModalProvider>
@@ -54,7 +56,7 @@ const MyApp: React.FC<Props> = (props) => {
         </UserProvider>
       </ThemeProvider>
     </QueryClientProvider>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;

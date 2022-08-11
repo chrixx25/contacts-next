@@ -1,9 +1,9 @@
-import Page from 'component/Page';
-import Main from '../container/main';
-import { withSession } from '../utils/session';
+import Page from "component/Page";
 
-const Home = (): React.ReactElement => <Page>main</Page>;
+import { withSession } from "../utils/session";
 
-export const getServerSideProps = withSession({ action: 'RINA' });
+const Home: React.FC = () => <Page>main</Page>;
+
+export const getServerSideProps = withSession({ action: "RINA" });
 
 export default Home;

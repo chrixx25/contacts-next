@@ -2,6 +2,15 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import queryString from "query-string";
 
+const sessionOptions = {
+  cookieName: process.env.NEXT_PUBLIC_COOKIE_NAME,
+  cookieOptions: {
+    maxAge: undefined,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "Lax" : false,
+  },
+};
+
 const request = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 
@@ -16,22 +25,21 @@ request.interceptors.request.use((config) => ({
   ...config,
   headers: {
     ...config.headers,
-    Authorization: `Bearer ${Cookies.get('userToken')}`,
+    Authorization: `Bearer ${Cookies.get("userToken")}`,
   },
 }));
 
 request.interceptors.response.use(
   (response) => response.data,
   (error) => {
-
     if (error.response) {
       if (
-        !error.request.responseURL.endsWith("sign-in") &&
+        !error.request.responseURL.endsWith("login") &&
         (error.response.status === 401 || error.response.status === 403) &&
         typeof window !== "undefined"
       ) {
         document.cookie = `${sessionOptions.cookieName}=`;
-        window.location.href = "/signin";
+        window.location.href = "/login";
       }
 
       // The request was made and the server responded with a status code

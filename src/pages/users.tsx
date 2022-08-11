@@ -1,6 +1,7 @@
-import Page from 'component/Page';
-import Users from '../container/users';
-import { withSession } from '../utils/session';
+import Page from "component/Page";
+
+import Users from "../container/users";
+import { withSession } from "../utils/session";
 
 const UsersPage = (): React.ReactElement => (
   <Page>
@@ -8,6 +9,6 @@ const UsersPage = (): React.ReactElement => (
   </Page>
 );
 
-export const getServerSideProps = withSession({ action: 'RINA' });
+export const getServerSideProps = withSession({ action: "RINA" });
 
 export default UsersPage;
