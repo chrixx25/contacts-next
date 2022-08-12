@@ -1,4 +1,4 @@
 export interface AddContactModalProps {
-  open: () => void;
+  open: boolean;
   onClose: () => void;
 }

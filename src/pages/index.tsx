@@ -1,6 +1,6 @@
 import Page from "component/Page";
 
-import Main from "../container/main";
+import Main from "../container/users";
 import { withSession } from "../utils/session";
 
 const Home = (): React.ReactElement => (

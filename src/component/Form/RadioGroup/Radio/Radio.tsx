@@ -10,13 +10,16 @@ const Radio = forwardRef<HTMLButtonElement, RadioProps>((props, ref) => {
   const radioGroup = useRadioGroup();
   let checked = false;
 
+  const { label, value } = props;
+
   if (radioGroup) {
     checked = radioGroup.value === props.value;
   }
 
   return (
     <FormControlLabel
-      {...props}
+      label={label}
+      value={value}
       control={<MuiRadio inputRef={ref} checked={checked} />}
     />
   );

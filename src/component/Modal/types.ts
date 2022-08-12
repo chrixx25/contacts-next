@@ -11,9 +11,9 @@ export interface ModalProps {
   onClose: () => void;
   onEnter?: () => void;
   onExited?: () => void;
-  children?: React.ReactNode;
+  children?: React.ReactNode | string;
 }
 
 export interface ModalElements {
-  Actions: React.FC | {};
+  Actions: any;
 }
