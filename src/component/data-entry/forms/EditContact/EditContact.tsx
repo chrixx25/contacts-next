@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
 
-import Form from "component/Form";
+import Form from "@/component/Form";
 
-const EditContact: React.FC = () => (
+const EditContact = (): React.ReactElement => (
   <Grid container spacing={2}>
     <Grid item xs={12}>
       <Form.TextField name="userName" label="Username" />

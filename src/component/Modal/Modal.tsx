@@ -6,15 +6,15 @@ import MuiDialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import MuiDialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
-import Slide from "@mui/material/Slide";
+import Slide, { SlideProps } from "@mui/material/Slide";
 import { styled } from "@mui/material/styles";
 import { noop } from "lodash";
 
-import { ModalProps, ModalElements } from "./types";
+import { ModalProps } from "./types";
 
 // eslint-disable-next-line react/display-name
 const Transition = forwardRef(
-  (props: any, ref: any): React.ReactElement => (
+  (props: SlideProps, ref): React.ReactElement => (
     <Slide {...props} ref={ref} direction="up" mountOnEnter unmountOnExit />
   )
 );
@@ -34,7 +34,7 @@ const DialogActions = styled(MuiDialogActions)(({ theme }) => ({
   padding: theme.spacing(3, 2),
 }));
 
-const Modal: React.FC<ModalProps> & ModalElements = (props) => {
+const Modal = (props: ModalProps): React.ReactElement => {
   const {
     title,
     maxWidth,

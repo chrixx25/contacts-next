@@ -1,4 +1,4 @@
-export interface IConfirmationModal {
+export interface ConfirmationModalProps {
   open?: boolean;
   onClose?: () => void;
   onConfirm?: () => void;

@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 
 import { DialogBoxTitleProps } from "./types";
 
-const DialogBoxTitle: React.FC<DialogBoxTitleProps> = (props) => {
+const DialogBoxTitle = (props: DialogBoxTitleProps): React.ReactElement => {
   const { children, onClose } = props;
 
   return (

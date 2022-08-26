@@ -1,8 +1,8 @@
 import request from "utils/request";
 
-import { UserAuth } from "./types";
+import { UserAuthParams, UserAuthResponse } from "./types";
 
-export const signIn = (data: UserAuth): any => {
+export const signIn = (data: UserAuthParams): Promise<UserAuthResponse> => {
   const { username, password } = data;
   const options = {
     url: "users/login",

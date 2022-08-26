@@ -1,3 +1,5 @@
+import { DataTableResults } from "@/component/DataTable/types";
+
 export interface ContactsParams {
   page: number;
   pageSize: number;
@@ -24,10 +26,6 @@ export interface ContactByIdResponse {
   userName: string;
 }
 
-export interface ContactsResponse {
+export interface ContactsResponse extends DataTableResults {
   results: ContactByIdResponse[];
-  page: number;
-  size: number;
-  pages: number;
-  total: number;
 }

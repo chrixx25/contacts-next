@@ -11,7 +11,7 @@ const StripedTableRow = styled(TableRow)({
   },
 });
 
-const TableBody: React.FC = () => {
+const TableBody = (): React.ReactElement => {
   const { page, prepareRow } = useDataTableContext();
 
   return (

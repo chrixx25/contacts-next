@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useToggle } from "react-use";
 
-const withPassword = (WrappedComponent: React.FC): any => {
+const withPassword = (WrappedComponent: React.ElementType): any => {
   const TextField = (props: any): any => {
     const { type, ...rest } = props;
     const [visible, toggleVisibility] = useToggle(false);

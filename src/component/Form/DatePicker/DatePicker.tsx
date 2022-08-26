@@ -11,7 +11,7 @@ import { useMetaError } from "hooks";
 
 import { DatePickerProps } from "./types";
 
-const DatePicker: React.FC<DatePickerProps> = (props) => {
+const DatePicker = (props: DatePickerProps): React.ReactElement => {
   const { formatReturned, format, helperText, name, defaultValue, ...rest } =
     props;
   const [selectedDate, setSelectedDate] = useState(null);
@@ -21,7 +21,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
   } = useController({ name, defaultValue });
   const { hasError, errorMessage } = useMetaError(fieldState);
 
-  const handleChange = (date): void => {
+  const handleChange = (date: string): void => {
     field.onChange({
       target: {
         name: field.name,

@@ -14,7 +14,7 @@ import { getOption } from "../utils";
 import styles from "./styles";
 import { SelectProps } from "./types";
 
-const Select: React.FC<SelectProps> = (props) => {
+const Select = (props: SelectProps): React.ReactElement => {
   const {
     name,
     label,

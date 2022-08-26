@@ -1,4 +1,19 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, PaletteColorOptions } from "@mui/material/styles";
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    form: PaletteColorOptions;
+  }
+  interface PaletteOptions {
+    form: PaletteColorOptions;
+  }
+  interface Theme {
+    drawerWidth: number;
+  }
+  interface ThemeOptions {
+    drawerWidth: number;
+  }
+}
 
 const theme = createTheme({
   drawerWidth: 240,
@@ -20,7 +35,9 @@ const theme = createTheme({
     },
     common: {
       black: "#333333",
-      form: "#E5E5E5",
+    },
+    form: {
+      main: "#E5E5E5",
     },
   },
 });

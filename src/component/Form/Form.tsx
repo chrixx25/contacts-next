@@ -8,9 +8,9 @@ import RadioGroup from "./RadioGroup";
 import Select from "./Select";
 import TextField from "./TextField";
 import ToggleButtonGroup from "./ToggleButtonGroup";
-import { InputProps, FormProps } from "./types";
+import { FormProps } from "./types";
 
-const Form: React.FC<FormProps | any> & InputProps = (props) => {
+const Form = (props: FormProps & any): React.ReactElement => {
   const { onSubmit, children, ...methods } = props;
 
   return (

@@ -16,14 +16,14 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const DialogBox: React.FC<DialogBoxProps> = ({
+const DialogBox = ({
   open,
   onClose,
   submit,
   title,
   children,
   isLoading,
-}) => (
+}: DialogBoxProps): React.ReactElement => (
   <BootstrapDialog
     onClose={onClose}
     aria-labelledby="customized-dialog-title"

@@ -16,11 +16,11 @@ interface PageProps {
 }
 
 interface Props {
-  Component: React.FC;
+  Component: React.ComponentClass | React.ElementType;
   pageProps: PageProps;
 }
 
-const MyApp: React.FC<Props> = (props) => {
+const MyApp = (props: Props): React.ReactElement => {
   const {
     Component,
     pageProps: { user, ...pageProps },

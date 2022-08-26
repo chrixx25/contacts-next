@@ -1,13 +1,7 @@
-import { MenuItemProps } from "./MenuItem/types";
-import { SubMenuProps } from "./SubMenu/types";
+import { MenuProps } from "@mui/material/Menu";
 
-export interface CustomMenuProp {
+export interface CustomMenuProp extends Omit<MenuProps, "open"> {
   action?: any;
   children: any;
   onClick?: () => void;
-}
-
-export interface MenuElementProps {
-  SubMenu: React.FC<SubMenuProps>;
-  Item: React.FC<MenuItemProps>;
 }

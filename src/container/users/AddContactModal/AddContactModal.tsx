@@ -14,7 +14,7 @@ import ConfirmationModal from "../ConfirmationModal";
 import { defaultFormValues, schema } from "./utils";
 import { AddContactModalProps } from "./types";
 
-const AddContactModal: React.FC<AddContactModalProps> = (props) => {
+const AddContactModal = (props: AddContactModalProps): React.ReactElement => {
   const { open, onClose } = props;
   const { showModal } = useModal();
   const contactForm = useForm({

@@ -5,9 +5,9 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import { nanoid } from "@reduxjs/toolkit";
 
 // eslint-disable-next-line import/extensions
-import { useDataTableContext } from "../context.js";
+import { useDataTableContext } from "../context";
 
-const TableHead: React.FC = () => {
+const TableHead = (): React.ReactElement => {
   const { headerGroups } = useDataTableContext();
 
   return (

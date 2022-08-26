@@ -5,9 +5,11 @@ import { noop } from "lodash";
 
 import Modal from "component/Modal";
 
-import { IConfirmationModal } from "./types";
+import { ConfirmationModalProps } from "./types";
 
-const ConfirmationModal: React.FC<IConfirmationModal> = (props) => {
+const ConfirmationModal = (
+  props: ConfirmationModalProps
+): React.ReactElement => {
   const { open, onClose, onConfirm, message } = props;
   const [isLoading, setIsLoading] = useState(false);
 

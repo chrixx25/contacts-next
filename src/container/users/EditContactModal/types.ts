@@ -1,6 +1,6 @@
-export interface IEditContactModal {
+export interface EditContactModalProps {
   id?: string;
   meta?: any;
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
 }

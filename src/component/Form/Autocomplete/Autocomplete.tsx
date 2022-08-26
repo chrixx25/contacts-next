@@ -11,12 +11,12 @@ import { useMetaError } from "hooks";
 
 import { getOption } from "../utils";
 
-import { AutocompleteParams } from "./types";
+import { AutocompleteProps } from "./types";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const Autocomplete: React.FC<AutocompleteParams> = (props) => {
+const Autocomplete = (props: AutocompleteProps): React.ReactElement => {
   const {
     name,
     defaultValue,

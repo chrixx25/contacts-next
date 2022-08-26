@@ -66,7 +66,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const SideBar = () => {
+const SideBar = (): React.ReactElement => {
   const theme = useTheme();
   const [state, dispatch] = useAppState();
   // const user = useUser()[0]?.result;

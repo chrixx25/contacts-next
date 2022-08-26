@@ -15,7 +15,7 @@ import { useAuth } from "react-query/mutations";
 
 import { loginSchema } from "./validationSchema";
 
-const Login: React.FC = () => {
+const Login = (): React.ReactElement => {
   const signIn = useAuth();
   const {
     register,

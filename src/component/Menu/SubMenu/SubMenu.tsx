@@ -11,7 +11,7 @@ const StyledArrowRightIcon = styled(ArrowRightIcon)(() => ({
   marginLeft: "auto",
 }));
 
-const SubMenu: React.FC<SubMenuProps> = (props) => {
+const SubMenu = (props: SubMenuProps): React.ReactElement => {
   const { icon, label, children, ...rest } = props;
 
   const renderAction = (actionProps: any): React.ReactElement => (

@@ -8,3 +8,10 @@ export interface DataTableProps {
   onPageChange: (pageNumber: number) => void;
   onRowsPerPageChange: (pageNumber: number) => void;
 }
+
+export interface DataTableResults {
+  page: number;
+  size: number;
+  pages: number;
+  total: number;
+}

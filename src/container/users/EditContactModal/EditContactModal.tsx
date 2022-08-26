@@ -6,18 +6,19 @@ import Stack from "@mui/material/Stack";
 import { useModal } from "mui-modal-provider";
 import { useForm } from "react-hook-form";
 
-import EditContact from "component/data-entry/forms/EditContact";
-import Form from "component/Form";
-import Modal from "component/Modal";
-import { useUpdateContact } from "react-query/mutations";
-import { useGetContactById } from "react-query/queries";
+import EditContact from "@/component/data-entry/forms/EditContact";
+import Form from "@/component/Form";
+import Modal from "@/component/Modal";
+import { useUpdateContact } from "@/react-query/mutations";
+import { useGetContactById } from "@/react-query/queries";
+import { ContactParams } from "@/apis/contacts/types";
 
 import ConfirmationModal from "../ConfirmationModal";
 
 import { schema, defaultFormValues } from "./utils";
-import { IEditContactModal } from "./types";
+import { EditContactModalProps } from "./types";
 
-const EditContactModal: React.FC<IEditContactModal> = (props) => {
+const EditContactModal = (props: EditContactModalProps): React.ReactElement => {
   const { id, meta, open, onClose } = props;
   const updateContact = useUpdateContact(id, meta);
   const contact = useGetContactById(id);
@@ -29,7 +30,7 @@ const EditContactModal: React.FC<IEditContactModal> = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = (values: any): void => {
+  const handleSubmit = (values: ContactParams): void => {
     const modal = showModal(ConfirmationModal);
 
     showModal(ConfirmationModal, {

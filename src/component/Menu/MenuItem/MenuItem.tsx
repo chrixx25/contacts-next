@@ -4,9 +4,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import MuiMenuItem from "@mui/material/MenuItem";
 import { noop } from "lodash";
 
-import { MenuItemProps } from "./types";
+import { CustomMenuItemProps } from "./types";
 
-const MenuItem: React.FC<MenuItemProps> = (props) => {
+const MenuItem = (props: CustomMenuItemProps): React.ReactElement => {
   const { icon, children, ...rest } = props;
 
   return (

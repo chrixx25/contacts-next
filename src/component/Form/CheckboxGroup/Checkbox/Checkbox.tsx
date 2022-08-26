@@ -7,10 +7,13 @@ import { CheckboxProps } from "../types";
 
 const Checkbox = forwardRef(
   (props: CheckboxProps, ref: any): React.ReactElement => {
-    const { checked, ...rest } = props;
+    const { checked, label, value, onChange } = props;
     return (
       <FormControlLabel
-        {...rest}
+        label={label}
+        value={value}
+        checked={checked}
+        onChange={onChange}
         control={<MuiCheckbox inputRef={ref} checked={checked} />}
       />
     );

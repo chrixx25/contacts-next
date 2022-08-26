@@ -1,4 +1,4 @@
-export interface CheckboxParams {
+export interface CheckboxProps {
   label?: string;
   name?: string;
   helperText?: string;

@@ -1,4 +1,4 @@
-export interface AutocompleteParams {
+export interface AutocompleteProps {
   label?: string;
   name?: string;
   helperText?: string;

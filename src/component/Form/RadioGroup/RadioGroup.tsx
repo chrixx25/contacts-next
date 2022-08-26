@@ -13,7 +13,7 @@ import { getOption } from "../utils";
 import Radio from "./Radio";
 import { RadioGroupProps } from "./types";
 
-const RadioGroup: React.FC<RadioGroupProps> = (props) => {
+const RadioGroup = (props: RadioGroupProps): React.ReactElement => {
   const {
     name,
     row,

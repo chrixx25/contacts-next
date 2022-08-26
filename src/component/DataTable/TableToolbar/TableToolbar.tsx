@@ -5,11 +5,11 @@ import Typography from "@mui/material/Typography";
 
 import Searchbar from "./Searchbar";
 
-interface ITableToolbar {
+interface TableToolbarProps {
   title: string;
 }
 
-const TableToolbar: React.FC<ITableToolbar> = (props) => {
+const TableToolbar = (props: TableToolbarProps): React.ReactElement => {
   const { title } = props;
   return (
     <Paper>

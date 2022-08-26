@@ -1,6 +1,6 @@
 import { cloneElement } from "react";
 
-import MuiMenu, { MenuProps } from "@mui/material/Menu";
+import MuiMenu from "@mui/material/Menu";
 import { nanoid } from "@reduxjs/toolkit";
 import {
   usePopupState,
@@ -11,11 +11,9 @@ import flattenChildren from "react-keyed-flatten-children";
 
 import MenuItem from "./MenuItem";
 import SubMenu from "./SubMenu";
-import { CustomMenuProp, MenuElementProps } from "./types";
+import { CustomMenuProp } from "./types";
 
-const Menu: React.FC<CustomMenuProp | MenuProps> & MenuElementProps = (
-  props
-) => {
+const Menu = (props: CustomMenuProp): React.ReactElement => {
   const { action, children, ...rest } = props;
 
   const popupState = usePopupState({ variant: "popover", popupId: nanoid() });

@@ -34,7 +34,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Searchbar: React.FC = () => (
+const Searchbar = (): React.ReactElement => (
   <Search>
     <SearchIconWrapper>
       <SearchIcon />

@@ -6,9 +6,9 @@ import { useController } from "react-hook-form";
 
 import { useMetaError } from "hooks";
 
-import { CheckboxParams } from "./types";
+import { CheckboxProps } from "./types";
 
-const Checkbox: React.FC<CheckboxParams> = (props) => {
+const Checkbox = (props: CheckboxProps): React.ReactElement => {
   const { label, helperText, name, defaultValue } = props;
   const {
     field: { ref, ...field },

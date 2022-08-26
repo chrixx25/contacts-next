@@ -42,7 +42,7 @@ interface IlabelDisplayedRows {
   count: number;
 }
 
-const DefaultCell: React.FC<DefaultCellProps> = ({ value }) => (
+const DefaultCell = ({ value }: DefaultCellProps): React.ReactElement => (
   <Typography noWrap>{value || "Not Applicable"}</Typography>
 );
 
@@ -50,7 +50,7 @@ const defaultColumn = {
   Cell: DefaultCell,
 };
 
-const DataTable: React.FC<DataTableProps> = (props) => {
+const DataTable = (props: DataTableProps): React.ReactElement => {
   const {
     columns,
     data,
@@ -89,7 +89,11 @@ const DataTable: React.FC<DataTableProps> = (props) => {
     state: { pageIndex },
   } = tableInstance;
 
-  function labelDisplayedRows({ from, to, count }: IlabelDisplayedRows): any {
+  function labelDisplayedRows({
+    from,
+    to,
+    count,
+  }: IlabelDisplayedRows): string {
     return `Showing ${from} to ${to} of ${count} entries`;
   }
 

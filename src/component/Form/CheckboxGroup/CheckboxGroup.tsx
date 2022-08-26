@@ -12,7 +12,7 @@ import { getOption } from "../utils";
 import Checkbox from "./Checkbox";
 import { CheckboxGroupProps } from "./types";
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = (props) => {
+const CheckboxGroup = (props: CheckboxGroupProps): React.ReactElement => {
   const {
     name,
     row,
