@@ -1,4 +1,4 @@
-import { createReducerContext } from 'react-use';
+import { createReducerContext } from "react-use";
 
 const initialState = {
   sidebarCollapsed: true,
@@ -10,9 +10,9 @@ interface State {
 
 type Action = string;
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action) {
-    case 'sidebarCollapsed':
+    case "sidebarCollapsed":
       return { ...state, sidebarCollapsed: !state.sidebarCollapsed };
     default:
       return state;

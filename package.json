@@ -18,6 +18,8 @@
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "cookies": "^0.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "material-ui-popup-state": "^2.0.0",
@@ -25,6 +27,7 @@
     "mui-modal-provider": "^2.0.0",
     "next": "12.1.0",
     "notistack": "^2.0.3",
+    "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -40,8 +43,13 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.34",
-    "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-next": "^12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "typescript": "^4.6.4"
   }
 }
